@@ -9,7 +9,8 @@ from player import Player
 pygame.init()
 screen = pygame.display.set_mode((screen_width,screen_height))
 clock = pygame.time.Clock()
-level = Level(level_layout,screen)
+level = Level(level1, screen)
+pygame.display.set_caption("Waddle")
 
 
 # setting a loop to continuously display the screen unless user decides to quit
