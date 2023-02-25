@@ -2,14 +2,26 @@ import pygame
 import sys
 from settings import *
 from level import Level
-from player import Player
+from player import *
+from gamestates import Button
+from menu import Menu
 
 #intialising pygame and setting up essentials for game to run
 
 pygame.init()
 screen = pygame.display.set_mode((screen_width,screen_height))
 clock = pygame.time.Clock()
-level = Level(level1, screen)
+level = Level(level_layout, screen)
+
+
+#creating objects
+player = Player((32,64))
+button_play = Button("Play",500,100,300,50)
+menu_level = Menu(500,200)
+button_level = menu_level.add_button("Level")
+
+
+
 pygame.display.set_caption("Waddle")
 
 
@@ -18,12 +30,26 @@ pygame.display.set_caption("Waddle")
 
 while True:
     for event in pygame.event.get():
+
+
+
+
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+    screen.fill("black")
+
+
+
+
+
 
     level.run()
-    
+    button_play.draw(screen)
+    menu_level.render(screen)
+
+
+
 
     pygame.display.update()
     clock.tick(60)

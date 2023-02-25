@@ -1,4 +1,4 @@
-level1 = [
+level_layout = [
     "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     "                                    ",
     "xxxx   xxx      xxxxx   xxx    xxx  ",
@@ -15,13 +15,13 @@ level1 = [
 
 
 
-level_array = [level1]
+level_array = [level_layout]
 
 
 
 tile_size = 64
-screen_width = 1200
-level_rows = len(level1)
+screen_width = 1280
+level_rows = len(level_layout)
 screen_height = tile_size * level_rows
 
 
