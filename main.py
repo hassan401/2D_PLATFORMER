@@ -16,9 +16,13 @@ level = Level(level_layout, screen)
 
 #creating objects
 player = Player((32,64))
-button_play = Button("Play",500,100,300,50)
-menu_level = Menu(500,200)
-button_level = menu_level.add_button("Level")
+# button_play = Button("Play",500,100,300,50)
+
+button = Button("Play",500,100,300,50)
+menu = Menu(500,90)
+menu.add_button("Play")
+menu.add_button("Login")
+
 
 
 
@@ -38,6 +42,7 @@ while True:
             pygame.quit()
             sys.exit()
     screen.fill("black")
+    menu.render(screen)
 
 
 
@@ -45,8 +50,9 @@ while True:
 
 
     level.run()
-    button_play.draw(screen)
-    menu_level.render(screen)
+
+
+
 
 
 

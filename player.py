@@ -3,9 +3,9 @@ import pygame
 class Player(pygame.sprite.Sprite):
     def __init__(self,position):
         super().__init__() #inheriting here so need this
-        self.image = pygame.Surface((32,64))
-        self.image.fill("red")
-        # self.image = pygame.image.load("neagui/Sprites/01-King Human/Idle (78x58).png")
+        # self.image = pygame.Surface((32,64))
+        # self.image.fill("red")
+        self.image = pygame.image.load("neagui/Sprites/01-King Human/Ground (78x58).png ").convert_alpha()
         self.move = pygame.math.Vector2(0,0)
         self.rect = self.image.get_rect(topleft = position)
         self.speed = 7
