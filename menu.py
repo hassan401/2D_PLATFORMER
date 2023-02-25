@@ -16,6 +16,8 @@ class Menu:
         self.buttons.append(Button(text,self.x,self.y,self.width,self.height))
         self.y += self.height + 10
 
+
     def render(self,surface):
         for button in self.buttons:
             button.draw(surface)
+

@@ -18,10 +18,14 @@ level = Level(level_layout, screen)
 player = Player((32,64))
 # button_play = Button("Play",500,100,300,50)
 
-button = Button("Play",500,100,300,50)
+# button = Button("Play",500,100,300,50)
 menu = Menu(500,90)
 menu.add_button("Play")
+menu.add_button("Tutorial")
+menu.add_button("Source Code")
+menu.add_button("Leaderboard")
 menu.add_button("Login")
+
 
 
 
@@ -34,6 +38,7 @@ pygame.display.set_caption("Waddle")
 
 while True:
     for event in pygame.event.get():
+
 
 
 

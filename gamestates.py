@@ -43,7 +43,7 @@ class Button:
 
     def draw(self,surface):
         pos = (self.rect.x + (self.rect.width-self.text.get_width())//2,
-               self.rect.y + (self.rect.height-self.text.get_width())//2)
+               self.rect.y + (self.rect.height-self.text.get_height())//2)
         pygame.draw.rect(surface,self.colour,self.rect)
         surface.blit(self.text,pos)
 
