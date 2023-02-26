@@ -14,19 +14,87 @@ black = (0,0,0)
 #different states such as main menu, levels, tutorials, source code and login
 
 class States:
-    def __init__(self):
+    def __init__(self):#
+        from settings import screen_width, screen_height
         #setting different options
-        self.menu = False
-        self.level = False
-        self.tutorial = False
-        self.source_code = False
-        self.login = False
+        self.main_menu = False
+        self.m_level = False
+        self.m_tutorial = False
+        self.m_source_code = False
+        self.m_login = False
+        self.screen_width = screen_width
+        self.screen_height = screen_height
+        self.screen = pygame.display.set_mode((screen_width,screen_height))
 
-        #
+
 
 
     def menu(self):
-        pass
+        if self.main_menu == True:
+            while True:
+                for event in pygame.event.get():
+
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
+                self.screen.fill("black")
+
+                pygame.display.update()
+                clock.tick(60)
+
+    def level(self):
+        if self.m_level == True:
+            while True:
+                for event in pygame.event.get():
+
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
+                self.screen.fill("black")
+
+                pygame.display.update()
+                clock.tick(60)
+
+
+    def tutorial(self):
+        if self.m_tutorial == True:
+            while True:
+                for event in pygame.event.get():
+
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
+                self.screen.fill("white")
+
+                pygame.display.update()
+                clock.tick(60)
+
+    def source_code(self):
+        if self.m_source_code == True:
+            while True:
+                for event in pygame.event.get():
+
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
+                self.screen.fill("grey")
+
+                pygame.display.update()
+                clock.tick(60)
+
+    def login(self):
+        if self.m_login == True:
+            while True:
+                for event in pygame.event.get():
+
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
+                self.screen.fill("blue")
+
+                pygame.display.update()
+                clock.tick(60)
+
 
 
 
@@ -37,9 +105,6 @@ class Button:
         self.colour = sky_blue
         font = pygame.font.Font("neagui/font/Grand9K Pixel.ttf",25)
         self.text = font.render(text,False,white)
-
-
-
 
     def draw(self,surface):
         pos = (self.rect.x + (self.rect.width-self.text.get_width())//2,

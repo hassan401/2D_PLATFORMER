@@ -3,7 +3,7 @@ import sys
 from settings import *
 from level import Level
 from player import *
-from gamestates import Button
+from gamestates import States
 from menu import Menu
 
 #intialising pygame and setting up essentials for game to run
@@ -26,7 +26,7 @@ menu.add_button("Source Code")
 menu.add_button("Leaderboard")
 menu.add_button("Login")
 
-
+state = States()
 
 
 
@@ -38,6 +38,10 @@ pygame.display.set_caption("Waddle")
 
 while True:
     for event in pygame.event.get():
+        state.menu()
+        state.tutorial()
+        state.source_code()
+        state.login()
 
 
 
