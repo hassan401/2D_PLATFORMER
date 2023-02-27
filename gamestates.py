@@ -105,12 +105,18 @@ class Button:
         self.colour = sky_blue
         font = pygame.font.Font("neagui/font/Grand9K Pixel.ttf",25)
         self.text = font.render(text,False,white)
+        self.clicked = False
+
+
+    def collide_button(self,pos):
+        return self.rect.collidepoint(pos)
 
     def draw(self,surface):
         pos = (self.rect.x + (self.rect.width-self.text.get_width())//2,
                self.rect.y + (self.rect.height-self.text.get_height())//2)
         pygame.draw.rect(surface,self.colour,self.rect)
         surface.blit(self.text,pos)
+
 
 
 
