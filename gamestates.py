@@ -1,6 +1,6 @@
 import pygame
 import sys
-
+# from image import slice
 
 
 
@@ -106,16 +106,29 @@ class Button:
         font = pygame.font.Font("neagui/font/Grand9K Pixel.ttf",25)
         self.text = font.render(text,False,white)
         self.clicked = False
+        self.pressed = False
 
 
-    def collide_button(self,pos):
-        return self.rect.collidepoint(pos)
+
+    def collide_button(self):
+        m_pos = pygame.mouse.get_pos()
+        if self.rect.collidepoint(m_pos):
+            if pygame.mouse.get_pressed()[0]:
+                self.pressed = True
+            else:
+                if self.pressed == True:
+                    print("click")
+                    self.pressed = False
+
+
 
     def draw(self,surface):
+
         pos = (self.rect.x + (self.rect.width-self.text.get_width())//2,
                self.rect.y + (self.rect.height-self.text.get_height())//2)
         pygame.draw.rect(surface,self.colour,self.rect)
         surface.blit(self.text,pos)
+        self.collide_button()
 
 
 

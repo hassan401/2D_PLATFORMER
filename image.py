@@ -19,7 +19,7 @@
 #     buttons = slice_image(image,button_size)
 #     for button in buttons:
 #         slices = slice_image(button,size)
-#         final_images.append(create_images(slices,f_size))
+#         final_images.append(create_images(slices,f_size))#resize image
 #
 #     return final_images
 #
@@ -34,7 +34,7 @@
 #     return surface
 #
 #
-# def slice_image(image,size[1]):
+# def slice_image(image,size):
 #     slices = []
 #     rect = image.get_rect()
 #
