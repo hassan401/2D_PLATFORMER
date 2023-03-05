@@ -3,8 +3,8 @@ import sys
 from settings import *
 from level import Level
 from player import *
-from gamestates import States
-from menu import Menu
+from gamestates import States,Menu,Button
+
 
 #intialising pygame and setting up essentials for game to run
 
@@ -16,15 +16,18 @@ level = Level(level_layout, screen)
 
 #creating objects
 player = Player((32,64))
-# button_play = Button("Play",500,100,300,50)
 
-# button = Button("Play",500,100,300,50)
+button_play = Button("Play",500,100,300,50)
+
+
+button = Button("Play",500,100,300,50)
 menu = Menu(500,90)
 menu.add_button("Play")
 menu.add_button("Tutorial")
 menu.add_button("Source Code")
 menu.add_button("Leaderboard")
 menu.add_button("Login")
+
 
 state = States()
 
@@ -42,6 +45,14 @@ while True:
         state.tutorial()
         state.source_code()
         state.login()
+        button.collide_button()
+
+
+
+
+
+
+
 
 
 
@@ -49,6 +60,7 @@ while True:
             pygame.quit()
             sys.exit()
     screen.fill("black")
+
     menu.render(screen)
 
 

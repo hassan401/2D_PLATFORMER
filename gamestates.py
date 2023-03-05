@@ -1,22 +1,23 @@
 import pygame
 import sys
-# from image import slice
-
 
 
 pygame.init()
 clock = pygame.time.Clock()
 
 
-sky_blue = (127,255,212)
-white = (255,255,255)
-black = (0,0,0)
+sky_blue = (127, 255, 212)
+white = (255, 255, 255)
+black = (0, 0, 0)
+
 #different states such as main menu, levels, tutorials, source code and login
+
 
 class States:
     def __init__(self):#
         from settings import screen_width, screen_height
         #setting different options
+        #menu = Menu()
         self.main_menu = False
         self.m_level = False
         self.m_tutorial = False
@@ -25,9 +26,6 @@ class States:
         self.screen_width = screen_width
         self.screen_height = screen_height
         self.screen = pygame.display.set_mode((screen_width,screen_height))
-
-
-
 
     def menu(self):
         if self.main_menu == True:
@@ -97,44 +95,57 @@ class States:
 
 
 
+class Menu():
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+        self.width = 300
+        self.height = 50
+        self.buttons = []
 
 
-class Button:
+
+    def add_button(self,text):
+        self.buttons.append(Button(text,self.x,self.y,self.width,self.height))
+        self.y += self.height + 10
+
+
+    def render(self,surface):
+        for button in self.buttons:
+            button.draw(surface)
+
+
+class Button(Menu):
     def __init__(self,text,x,y,width,height):
+        super().__init__(x,y)
         self.rect = pygame.Rect(x,y,width,height)
         self.colour = sky_blue
         font = pygame.font.Font("neagui/font/Grand9K Pixel.ttf",25)
         self.text = font.render(text,False,white)
-        self.clicked = False
         self.pressed = False
-
-
 
     def collide_button(self):
         m_pos = pygame.mouse.get_pos()
         if self.rect.collidepoint(m_pos):
             if pygame.mouse.get_pressed()[0]:
                 self.pressed = True
-            else:
                 if self.pressed == True:
-                    print("click")
+                    for i in range(len(self.buttons)):
+                        button = self.buttons[i]
+                        print(button)
+
+                else:
                     self.pressed = False
 
 
-
     def draw(self,surface):
+
 
         pos = (self.rect.x + (self.rect.width-self.text.get_width())//2,
                self.rect.y + (self.rect.height-self.text.get_height())//2)
         pygame.draw.rect(surface,self.colour,self.rect)
         surface.blit(self.text,pos)
         self.collide_button()
-
-
-
-
-
-
 
 
 
