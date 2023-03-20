@@ -1,15 +1,15 @@
 level_layout = [
-    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     "                                    ",
-    "xxxx   xxx      xxxxx   xxx    xxx  ",
-    "            x               x       ",
-    "xxx      x      xxxx      xxxx    x ",
-    "      xx                            ",
-    "xxxx       P     xxxxxx   x         ",
-    "          xxxx             xx       ",
-    "   xxxxxx         xxxx        xxx  x",
     "                                    ",
-    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"]
+    "                                  ",
+    "                                  ",
+    "                                  ",
+    "                                  ",
+    "xxxx       P                       ",
+    "                        xx         ",
+    "  xxxx          xxxx           xxxx  ",
+    " xxxxxxx                  xxxxxxxxxx                    ",
+    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"]
 
 
 

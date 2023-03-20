@@ -95,48 +95,30 @@ class States:
 
 
 
-class Menu():
-    def __init__(self,x,y):
+
+
+
+class Button():
+    def __init__(self,text,x,y,width,height):
+        self.rect = pygame.Rect(x,y,width,height)
+        self.colour = sky_blue
+        font = pygame.font.Font("neagui/font/Grand9K Pixel.ttf",25)
+        self.text = font.render(text,False,white)
+        self.pressed = False
         self.x = x
         self.y = y
         self.width = 300
         self.height = 50
         self.buttons = []
 
-
-
-    def add_button(self,text):
-        self.buttons.append(Button(text,self.x,self.y,self.width,self.height))
-        self.y += self.height + 10
-
-
-    def render(self,surface):
-        for button in self.buttons:
-            button.draw(surface)
-
-
-class Button(Menu):
-    def __init__(self,text,x,y,width,height):
-        super().__init__(x,y)
-        self.rect = pygame.Rect(x,y,width,height)
-        self.colour = sky_blue
-        font = pygame.font.Font("neagui/font/Grand9K Pixel.ttf",25)
-        self.text = font.render(text,False,white)
-        self.pressed = False
-
     def collide_button(self):
         m_pos = pygame.mouse.get_pos()
         if self.rect.collidepoint(m_pos):
             if pygame.mouse.get_pressed()[0]:
                 self.pressed = True
-                if self.pressed == True:
-                    for i in range(len(self.buttons)):
-                        button = self.buttons[i]
-                        print(button)
-
-                else:
-                    self.pressed = False
-
+                print("clcik")
+            else:
+                self.pressed = False
 
     def draw(self,surface):
 
@@ -147,6 +129,15 @@ class Button(Menu):
         surface.blit(self.text,pos)
         self.collide_button()
 
+
+    def add_button(self,text):
+        self.buttons.append(Button(text,self.x,self.y,self.width,self.height))
+        self.y += self.height + 10
+
+
+    def render(self,surface):
+        for button in self.buttons:
+            button.draw(surface)
 
 
 
