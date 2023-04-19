@@ -18,6 +18,7 @@ class States:
         from settings import screen_width, screen_height
         #setting different options
         #menu = Menu()
+        self.button = Button("Play",500,100,300,50)
         self.main_menu = False
         self.m_level = False
         self.m_tutorial = False
@@ -31,11 +32,14 @@ class States:
         if self.main_menu == True:
             while True:
                 for event in pygame.event.get():
+                    self.state.menu()
+
 
                     if event.type == pygame.QUIT:
                         pygame.quit()
                         sys.exit()
                 self.screen.fill("black")
+                self.button.render(screen)
 
                 pygame.display.update()
                 clock.tick(60)
@@ -92,10 +96,6 @@ class States:
 
                 pygame.display.update()
                 clock.tick(60)
-
-
-
-
 
 
 class Button():
