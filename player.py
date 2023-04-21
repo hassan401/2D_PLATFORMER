@@ -6,10 +6,10 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, position):
         super().__init__()
         self.assets = Assets()
-        self.current_state = "idle"  # Added current state
+        self.current_state = "idle"
         self.is_grounded = False
-        self.animation_states = self.assets.show_character()  # Added animation states dictionary
-        self.update_animation_list()  # Update the animation list based on the current state
+        self.animation_states = self.assets.show_character()
+        self.update_animation_list()
         self.frame_index = 0
         self.image = self.animation_list[self.frame_index]
         self.anim_timer = pygame.time.get_ticks()
@@ -39,21 +39,19 @@ class Player(pygame.sprite.Sprite):
             self.move.y = self.jump
             self.move_jump = True
 
-        # Update the current state based on the player movement
+
         prev_state = self.current_state
-        if self.move.x < 0 or self.move.x > 0:  # Check if the player is moving left or right
+        if self.move.x < 0 or self.move.x > 0:
             self.current_state = "run"
-        # elif self.move.y > 0:  # Check if the player is jumping
-        #     self.current_state = "jump"
         else:
             self.current_state = "idle"
 
         if prev_state != self.current_state:
-            self.update_animation_list()  # Update the animation list based on the current state
+            self.update_animation_list()
 
     def update_animation_list(self):
         self.animation_list = self.animation_states[self.current_state].copy()
-        if self.current_state == "run" and self.move.x < 0:  # Flip the animation when running left
+        if self.current_state == "run" and self.move.x < 0:
             for i, frame in enumerate(self.animation_list):
                 self.animation_list[i] = pygame.transform.flip(frame, True, False)
 
@@ -65,9 +63,9 @@ class Player(pygame.sprite.Sprite):
             if self.frame_index >= len(self.animation_list):
                 self.frame_index = 0
 
-        prev_rect = self.rect  # Save the previous rect
-        self.image = self.animation_list[self.frame_index]  # Update the current image of the player
-        self.rect = self.image.get_rect(topleft=prev_rect.topleft)  # Update the rect with the previous rect's position
+        prev_rect = self.rect
+        self.image = self.animation_list[self.frame_index]
+        self.rect = self.image.get_rect(topleft=prev_rect.topleft)
 
     def apply_gravity(self):
         self.move.y += self.gravity

@@ -4,24 +4,11 @@ from os import walk
 
 pygame.init()
 
-# def import_folder(path):
-#     surface_list = []
-#
-#     for _,__,img_files in walk(path):
-#         for image in img_files:
-#             f_path = path + "/" + image
-#             image_surf = pygame.image.load(f_path).convert_alpha()
-#             surface_list.append(image_surf)
-#
-#         print(surface_list)
-#
-#         return surface_list
-
-
 class Assets():
     def __init__(self):
         self.black = (0,0,0)
         self.animation_list = []
+        self.animation_list2 = []
         self.animation_steps = 11
         self.anim_timer = pygame.time.get_ticks()
         self.cooldown = 65
@@ -47,14 +34,9 @@ class Assets():
         player_run_sheet = self.load_image("neagui/Sprites/01-King Human/run/Run (78x58).png")
         for i in range(self.animation_steps):
             animation_list.append(self.get_image(player_run_sheet, i, 78, 58, 1.5))
+
         return animation_list
 
-    # def show_character_jump(self):
-    #     animation_list = []
-    #     player_jump_sheet = self.load_image("neagui/Sprites/01-King Human/jump/Jump (78x58).png")
-    #     for i in range(self.animation_steps):
-    #         animation_list.append(self.get_image(player_jump_sheet, i, 78, 58, 1.5))
-    #     return animation_list
 
     def load_image(self,file_path):
         return pygame.image.load(file_path).convert_alpha()
@@ -64,7 +46,7 @@ class Assets():
         image.blit(file, (0, 0), (frame_index * width, 0, width, height))
         image = pygame.transform.scale(image, (width * scale, height * scale))
 
-        # Set the color key to the top-left pixel color
+
         color_key = image.get_at((0, 0))
         image.set_colorkey(color_key)
 

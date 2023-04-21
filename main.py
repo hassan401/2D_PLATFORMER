@@ -42,9 +42,13 @@ pygame.display.set_caption("Waddle")
 
 while True:
     for event in pygame.event.get():
-
-
+        state.main_menu = True
         state.menu()
+
+
+
+
+
         # state.tutorial()
         # state.source_code()
         # state.login()
@@ -53,9 +57,12 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+
+
     screen.fill("sky blue")
     # button.render(screen)
     level.run()
+
     pygame.display.update()
     clock.tick(60)
 
