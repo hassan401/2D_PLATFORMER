@@ -20,19 +20,11 @@ black = (0,0,0)
 
 #creating objects
 player = Player((32,64))
-
 button_play = Button("Play",500,100,300,50)
-
-
-# button = Button("Play",500,100,300,50)
-# button.add_button("Play")
-# button.add_button("Tutorial")
-# button.add_button("Source Code")
-# button.add_button("Leaderboard")
-# button.add_button("Login")
-
-
 state = States()
+
+state.main_menu = True
+
 
 pygame.display.set_caption("Waddle")
 
@@ -42,27 +34,10 @@ pygame.display.set_caption("Waddle")
 
 while True:
     for event in pygame.event.get():
-        state.main_menu = True
-        state.menu()
-
-
-
-
-
-        # state.tutorial()
-        # state.source_code()
-        # state.login()
-
-
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-
-
-    screen.fill("sky blue")
-    # button.render(screen)
-    level.run()
-
+    state.run()
     pygame.display.update()
     clock.tick(60)
 
