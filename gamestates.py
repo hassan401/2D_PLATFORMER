@@ -40,7 +40,8 @@ class States:
         self.m_p_levels2 = False
         self.m_p_section = False
 
-        #levels booleans
+        #source code
+        self.m_s_buttons = False
 
     def button_instances(self):
         #main menu buttons
@@ -64,6 +65,9 @@ class States:
         self.button_level2s2 = Button("Level 2",500,170,300,50)
         self.button_level3s2 = Button("Level 3",500,240,300,50)
 
+        #source code buttons
+        self.button_link = Button("Link to code",500,100,300,50)
+
     def run(self):
         if self.main_menu:
             return self.menu()
@@ -82,7 +86,8 @@ class States:
         elif self.m_p_level1:
             return self.play_levels1()
         elif self.m_p_levels2:
-            return self.play_levels2()
+            return self.play_levels2() #section menu elifs
+
 
     def display_m_buttons(self):
         self.button_play.draw(self.screen)
@@ -104,6 +109,9 @@ class States:
         self.button_level1s2.draw(self.screen)
         self.button_level2s2.draw(self.screen)
         self.button_level2s3.draw(self.screen)
+
+    def display_link_button(self):
+        self.button_link.draw(self.screen)
 
     def button_collision_handler_m(self):
         if self.button_play.collideppoint():
@@ -134,6 +142,12 @@ class States:
         if self.button_section2.collideppoint():
             self.m_p_section = False
             self.m_p_levels2 = True
+
+    def button_collision_handler_source(self):
+        import webbrowser
+
+        if self.button_link.collideppoint():
+                webbrowser.open("https://github.com/hassan401/2D_PLATFORMER")
 
 
     def menu(self):
@@ -216,6 +230,8 @@ class States:
                             self.m_source_code = False
                             self.main_menu = True
                 self.screen.fill("grey")
+                self.display_link_button()
+                self.button_collision_handler_source()
 
                 pygame.display.update()
                 clock.tick(60)
@@ -326,6 +342,48 @@ class States:
                 if not self.m_p_levels2:
                     break
             return self.run()
+
+    def link_sc(self):
+        if self.m_source_code == True:
+            while True:
+                for event in pygame.event.get():
+
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
+                    if event.type == KEYDOWN:
+                        if event.key == K_ESCAPE:
+                            self.m_source_code = False
+                            self.main_menu = True
+                self.screen.fill("grey")
+
+                pygame.display.update()
+                clock.tick(60)
+                if not self.m_source_code:
+                    break
+            return self.run()
+
+    # def sc_section(self):
+    #     if self.m_s_buttons == True:
+    #         while True:
+    #             for event in pygame.event.get():
+    #
+    #                 if event.type == pygame.QUIT:
+    #                     pygame.quit()
+    #                     sys.exit()
+    #                 if event.type == KEYDOWN:
+    #                     if event.key == K_ESCAPE:
+    #                         self.m_s_buttons = False
+    #                         self.main_menu = True
+    #             self.screen.fill("black")
+    #             self.display_s_buttons()
+    #             self.button_collision_handler_s()
+    #
+    #             pygame.display.update()
+    #             clock.tick(60)
+    #             if not self.m_s_buttons:
+    #                 break
+    #         return self.run()
 
 
 
