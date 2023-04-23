@@ -20,7 +20,6 @@ black = (0,0,0)
 
 #creating objects
 player = Player((32,64))
-button_play = Button("Play",500,100,300,50)
 state = States()
 
 state.main_menu = True
