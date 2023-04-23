@@ -62,7 +62,7 @@ class States:
         #section 2 levels
         self.button_level1s2 = Button("Level 1",500,100,300,50)
         self.button_level2s2 = Button("Level 2",500,170,300,50)
-        self.button_level2s3 = Button("Level 3",500,240,300,50)
+        self.button_level3s2 = Button("Level 3",500,240,300,50)
 
     def run(self):
         if self.main_menu:
@@ -81,9 +81,7 @@ class States:
             return self.play_sections()
         elif self.m_p_level1:
             return self.play_levels1()
-        elif self.m_p_section2:
-            return self.play_sections2()
-        elif self.m_p_level2:
+        elif self.m_p_levels2:
             return self.play_levels2()
 
     def display_m_buttons(self):
@@ -135,7 +133,7 @@ class States:
 
         if self.button_section2.collideppoint():
             self.m_p_section = False
-            self.m_level2 = False
+            self.m_p_levels2 = True
 
 
     def menu(self):
