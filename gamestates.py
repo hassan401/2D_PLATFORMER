@@ -3,7 +3,7 @@ import sys
 from pygame.locals import *
 from level import Level
 from settings import *
-
+from level_assests import Levelassets
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -30,6 +30,7 @@ class States:
         #main menu booleans
         self.main_menu = False
         self.m_level = False
+        self.m_level2 = False
         self.m_tutorial = False
         self.m_source_code = False
         self.m_leaderboard = False
@@ -42,6 +43,9 @@ class States:
 
         #source code
         self.m_s_buttons = False
+
+        #end level
+        self.end_level = False
 
     def button_instances(self):
         #main menu buttons
@@ -87,6 +91,9 @@ class States:
             return self.play_levels1()
         elif self.m_p_levels2:
             return self.play_levels2() #section menu elifs
+        elif self.m_level2:
+            return self.level2()
+
 
 
     def display_m_buttons(self):
@@ -143,6 +150,15 @@ class States:
             self.m_p_section = False
             self.m_p_levels2 = True
 
+    def button_collision_handler_levels1(self):
+        if self.button_level1.collideppoint():
+            self.m_p_level1 = False
+            self.m_level = True
+
+        if self.button_level2.collideppoint():
+            self.m_p_level1 = False
+            self.m_level2 = True
+
     def button_collision_handler_source(self):
         import webbrowser
 
@@ -173,7 +189,8 @@ class States:
         return self.run()
 
     def level(self):
-        level = Level(level_layout, self.screen)
+        level = Level(level_1_layout, self.screen)
+        level_assest = Levelassets(self.screen)
         if self.m_level == True:
             while True:
                 for event in pygame.event.get():
@@ -183,8 +200,35 @@ class States:
                         sys.exit()
                     if event.type == KEYDOWN:
                         if event.key == K_ESCAPE:
-                            self.m_p_section = False
-                            self.main_menu = True
+                            self.m_level = False  # Add this line
+                            self.m_p_level1 = True
+
+                self.screen.fill("blue")
+                level.run()
+                level_assest.draw_coin()
+                level_assest.draw_health()
+
+
+
+                pygame.display.update()
+                clock.tick(60)
+                if not self.m_level:
+                    break
+            return self.run()
+
+    def level2(self):
+        level = Level(level_2_layout, self.screen)
+        if self.m_level2 == True:
+            while True:
+                for event in pygame.event.get():
+
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
+                    if event.type == KEYDOWN:
+                        if event.key == K_ESCAPE:
+                            self.m_level2 = False
+                            self.m_p_level1 = True
 
                 self.screen.fill("blue")
                 level.run()
@@ -193,7 +237,7 @@ class States:
 
                 pygame.display.update()
                 clock.tick(60)
-                if not self.m_level:
+                if not self.m_level2:
                     break
             return self.run()
 
@@ -315,6 +359,7 @@ class States:
                             self.m_p_section  = True
                 self.screen.fill("black")
                 self.display_l_buttons()
+                self.button_collision_handler_levels1()
 
                 pygame.display.update()
                 clock.tick(60)
@@ -362,29 +407,6 @@ class States:
                 if not self.m_source_code:
                     break
             return self.run()
-
-    # def sc_section(self):
-    #     if self.m_s_buttons == True:
-    #         while True:
-    #             for event in pygame.event.get():
-    #
-    #                 if event.type == pygame.QUIT:
-    #                     pygame.quit()
-    #                     sys.exit()
-    #                 if event.type == KEYDOWN:
-    #                     if event.key == K_ESCAPE:
-    #                         self.m_s_buttons = False
-    #                         self.main_menu = True
-    #             self.screen.fill("black")
-    #             self.display_s_buttons()
-    #             self.button_collision_handler_s()
-    #
-    #             pygame.display.update()
-    #             clock.tick(60)
-    #             if not self.m_s_buttons:
-    #                 break
-    #         return self.run()
-
 
 
 

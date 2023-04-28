@@ -27,6 +27,10 @@ class Level:
                     y = row_index * tile_size
                     player = Player((x,y))
                     self.player.add(player)
+                elif col == "e":
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+
 
     def player_horizontal_collisions(self):
         player = self.player.sprite

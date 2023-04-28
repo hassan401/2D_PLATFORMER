@@ -11,7 +11,7 @@ from gamestates import States,Button
 pygame.init()
 screen = pygame.display.set_mode((screen_width,screen_height))
 clock = pygame.time.Clock()
-level = Level(level_layout, screen)
+level = Level(level_1_layout, screen)
 
 
 #colours

@@ -42,7 +42,7 @@ class Assets():
         return pygame.image.load(file_path).convert_alpha()
 
     def get_image(self, file, frame_index, width, height, scale):
-        image = pygame.Surface((width, height), pygame.SRCALPHA)  # Add SRCALPHA flag
+        image = pygame.Surface((width, height), pygame.SRCALPHA)
         image.blit(file, (0, 0), (frame_index * width, 0, width, height))
         image = pygame.transform.scale(image, (width * scale, height * scale))
 
