@@ -30,6 +30,9 @@ class Level:
                 elif col == "e":
                     x = col_index * tile_size
                     y = row_index * tile_size
+                    tile = LevelTiles(tile_size,(x,y))
+                    self.tiles.add(tile)
+
 
 
     def player_horizontal_collisions(self):
@@ -57,6 +60,7 @@ class Level:
                 elif player.move.y < 0:
                     player.rect.top = sprite.rect.bottom
                     player.move.y = 0
+
 
     def camera(self):
         player = self.player.sprite

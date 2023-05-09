@@ -36,8 +36,11 @@ class Player(pygame.sprite.Sprite):
             self.move_idle = True
 
         if get_input[pygame.K_SPACE]:
-            self.move.y = self.jump
-            self.move_jump = True
+                self.move.y = self.jump
+                self.move_jump = True
+
+
+
 
 
         prev_state = self.current_state

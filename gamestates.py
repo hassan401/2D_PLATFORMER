@@ -189,57 +189,68 @@ class States:
         return self.run()
 
     def level(self):
-        level = Level(level_1_layout, self.screen)
-        level_assest = Levelassets(self.screen)
-        if self.m_level == True:
-            while True:
-                for event in pygame.event.get():
+        try:
+            level = Level(level_1_layout, self.screen)
+            level_assest = Levelassets(self.screen)
+            if self.m_level == True:
+                while True:
+                    for event in pygame.event.get():
 
-                    if event.type == pygame.QUIT:
-                        pygame.quit()
-                        sys.exit()
-                    if event.type == KEYDOWN:
-                        if event.key == K_ESCAPE:
-                            self.m_level = False  # Add this line
-                            self.m_p_level1 = True
+                        if event.type == pygame.QUIT:
+                            pygame.quit()
+                            sys.exit()
+                        if event.type == KEYDOWN:
+                            if event.key == K_ESCAPE:
+                                self.m_level = False  # Add this line
+                                self.m_p_level1 = True
 
-                self.screen.fill("blue")
-                level.run()
-                level_assest.draw_coin()
-                level_assest.draw_health()
+                    self.screen.fill("blue")
+                    level.run()
+                    level_assest.draw_coin()
+                    level_assest.draw_health()
+
+                    pygame.display.update()
+                    clock.tick(60)
+                    if not self.m_level:
+                        break
+                return self.run()
+        except ValueError:
+            print("Value Error in level method in gamestates.py")
 
 
+        except Exception:
+            print("Error in level method in gamestates.py")
 
-                pygame.display.update()
-                clock.tick(60)
-                if not self.m_level:
-                    break
-            return self.run()
 
     def level2(self):
-        level = Level(level_2_layout, self.screen)
-        if self.m_level2 == True:
-            while True:
-                for event in pygame.event.get():
+        try:
+            level = Level(level_2_layout, self.screen)
+            level_assest = Levelassets(self.screen)
+            if self.m_level2 == True:
+                while True:
+                    for event in pygame.event.get():
 
-                    if event.type == pygame.QUIT:
-                        pygame.quit()
-                        sys.exit()
-                    if event.type == KEYDOWN:
-                        if event.key == K_ESCAPE:
-                            self.m_level2 = False
-                            self.m_p_level1 = True
+                        if event.type == pygame.QUIT:
+                            pygame.quit()
+                            sys.exit()
+                        if event.type == KEYDOWN:
+                            if event.key == K_ESCAPE:
+                                self.m_level2 = False
+                                self.m_p_level1 = True
 
-                self.screen.fill("blue")
-                level.run()
+                    self.screen.fill("blue")
+                    level.run()
+                    level_assest.draw_coin()
+                    level_assest.draw_health()
 
+                    pygame.display.update()
+                    clock.tick(60)
+                    if not self.m_level2:
+                        break
+                return self.run()
+        except Exception:
+            print("Error in level2 method in gamestates.py")
 
-
-                pygame.display.update()
-                clock.tick(60)
-                if not self.m_level2:
-                    break
-            return self.run()
 
     def tutorial(self):
         if self.m_tutorial == True:

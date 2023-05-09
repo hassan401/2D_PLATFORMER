@@ -5,9 +5,9 @@ level_1_layout = [
     "                                                                                                                    ",
     "                                                                                                                    ",
     "                                                         ",
-    "  P                                                                                                                            ",
-    "                                                                                                                                    ",
-    "                 xx                      xx                   xxxxx                                                         ",
+    "  P                                                                                             e                              ",
+    "                                                                                                e                                   ",
+    "                 xx                      xx                   xxxxx                             e                           ",
     "               xxxxxxx                 xxxxxxxx          xxxxxxxxxxxxxxx                        e                      ",
     "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"]
 
